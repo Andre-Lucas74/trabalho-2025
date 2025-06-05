@@ -1,150 +1,213 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados de Umidade e Nível de Água</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Referência ao arquivo CSS -->
+    <title>Monitoramento Ambiental</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header>
-    <h1>Dados de Umidade e Nível de Água</h1>
-</header>
-
-<div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'umidade-agua')">Umidade da Água</button>
-    <button class="tablinks" onclick="openTab(event, 'nivel-agua')">Nível da Água</button>
-    <button class="tablinks" onclick="openTab(event, 'umidade-sol')">Umidade do Sol</button>
-</div>
-
-<main>
-    <!-- Umidade da Água -->
-    <div id="umidade-agua" class="tab-content">
-        <h2>Umidade da Água</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Umidade da Água (%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>01/06/2025</td>
-                    <td>75</td>
-                </tr>
-                <tr>
-                    <td>02/06/2025</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <td>03/06/2025</td>
-                    <td>70</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="chart-container">
-            <h3>Gráfico de Umidade da Água</h3>
-            <div class="chart" id="chartUmidade">
-                <p>Gráfico de umidade da água será exibido aqui.</p>
-            </div>
+    <div class="container" id="welcome-container">
+        <div class="mode-toggle">
+            <button id="btn-mode">🌙 Modo Escuro</button>
         </div>
+        <h1 id="welcome">Bem-vindo ao Monitoramento Ambiental!</h1>
+        <p id="intro">Explore dados de umidade do solo, da água e níveis hídricos em diversas cidades brasileiras.<br>
+        Desenvolvido para informar, conscientizar e apoiar boas práticas ambientais.</p>
+        <button id="btn-entrar">Entrar</button>
+        <footer class="footer">
+            <p>© 2025 Monitoramento Ambiental • Feito com ♥️ por Andre-Lucas74</p>
+        </footer>
     </div>
 
-    <!-- Nível da Água -->
-    <div id="nivel-agua" class="tab-content">
-        <h2>Nível da Água</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Nível da Água (cm)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>01/06/2025</td>
-                    <td>120</td>
-                </tr>
-                <tr>
-                    <td>02/06/2025</td>
-                    <td>130</td>
-                </tr>
-                <tr>
-                    <td>03/06/2025</td>
-                    <td>110</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="chart-container">
-            <h3>Gráfico de Nível da Água</h3>
-            <div class="chart" id="chartNivel">
-                <p>Gráfico de nível da água será exibido aqui.</p>
-            </div>
+    <div class="container" id="main-content" style="display:none;">
+        <h2>Dados Ambientais por Cidade</h2>
+        <div class="btn-group">
+            <button class="tab-btn active" data-tab="solo">Umidade do Solo</button>
+            <button class="tab-btn" data-tab="agua">Umidade da Água</button>
+            <button class="tab-btn" data-tab="nivel">Nível da Água</button>
         </div>
+        <div id="tab-solo" class="tab-content" style="display:block;">
+            <table>
+                <caption>Umidade do Solo por Cidade</caption>
+                <thead>
+                    <tr>
+                        <th>Cidade</th>
+                        <th>Valor Atual</th>
+                        <th>Unidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>São Paulo</td>
+                        <td>53.2</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Belo Horizonte</td>
+                        <td>60.1</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Porto Alegre</td>
+                        <td>48.7</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Paraná</td>
+                        <td>50.8</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Rio de Janeiro</td>
+                        <td>58.4</td>
+                        <td>%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Solo úmido" class="topic-img">
+            <p>
+                <strong>Umidade do solo</strong> é essencial para a saúde das plantas e produtividade agrícola. Seu monitoramento auxilia na conservação ambiental, prevenção de secas e otimização do uso de água.
+            </p>
+        </div>
+        <div id="tab-agua" class="tab-content" style="display:none;">
+            <table>
+                <caption>Umidade da Água por Cidade</caption>
+                <thead>
+                    <tr>
+                        <th>Cidade</th>
+                        <th>Valor Atual</th>
+                        <th>Unidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>São Paulo</td>
+                        <td>67.8</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Belo Horizonte</td>
+                        <td>55.6</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Porto Alegre</td>
+                        <td>72.2</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Paraná</td>
+                        <td>63.7</td>
+                        <td>%</td>
+                    </tr>
+                    <tr>
+                        <td>Rio de Janeiro</td>
+                        <td>59.3</td>
+                        <td>%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Água limpa" class="topic-img">
+            <p>
+                <strong>Umidade da água</strong> está relacionada à qualidade e disponibilidade dos recursos hídricos. Dados precisos contribuem para a gestão sustentável dos mananciais e para a saúde da população.
+            </p>
+        </div>
+        <div id="tab-nivel" class="tab-content" style="display:none;">
+            <table>
+                <caption>Nível da Água por Cidade</caption>
+                <thead>
+                    <tr>
+                        <th>Cidade</th>
+                        <th>Valor Atual</th>
+                        <th>Unidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>São Paulo</td>
+                        <td>78.5</td>
+                        <td>cm</td>
+                    </tr>
+                    <tr>
+                        <td>Belo Horizonte</td>
+                        <td>83.3</td>
+                        <td>cm</td>
+                    </tr>
+                    <tr>
+                        <td>Porto Alegre</td>
+                        <td>92.1</td>
+                        <td>cm</td>
+                    </tr>
+                    <tr>
+                        <td>Paraná</td>
+                        <td>80.0</td>
+                        <td>cm</td>
+                    </tr>
+                    <tr>
+                        <td>Rio de Janeiro</td>
+                        <td>76.9</td>
+                        <td>cm</td>
+                    </tr>
+                </tbody>
+            </table>
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Nível da água" class="topic-img">
+            <p>
+                <strong>Nível da água</strong> é fundamental para a prevenção de enchentes, planejamento urbano e uso racional da água. O acompanhamento contínuo protege comunidades e o meio ambiente.
+            </p>
+        </div>
+        <div style="margin-top:24px;">
+            <button id="btn-voltar">Voltar</button>
+        </div>
+        <footer class="footer">
+            <p>
+                Dados simulados para fins de aprendizado.<br>
+                Siga boas práticas ambientais e mantenha-se informado.<br>
+                © 2025 Monitoramento Ambiental
+            </p>
+        </footer>
     </div>
 
-    <!-- Umidade do Sol -->
-    <div id="umidade-sol" class="tab-content">
-        <h2>Umidade do Sol</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Umidade do Sol (%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>01/06/2025</td>
-                    <td>60</td>
-                </tr>
-                <tr>
-                    <td>02/06/2025</td>
-                    <td>65</td>
-                </tr>
-                <tr>
-                    <td>03/06/2025</td>
-                    <td>55</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="chart-container">
-            <h3>Gráfico de Umidade do Sol</h3>
-            <div class="chart" id="chartSol">
-                <p>Gráfico de umidade do sol será exibido aqui.</p>
-            </div>
-        </div>
-    </div>
-</main>
+    <script>
+        // Mensagem animada de boas-vindas
+        document.addEventListener('DOMContentLoaded', function() {
+            const welcome = document.getElementById('welcome');
+            welcome.classList.add('animado');
+        });
 
-<footer>
-    <p>&copy; 2025 Dados Ambientais. Todos os direitos reservados.</p>
-</footer>
-
-<script>
-    function openTab(evt, tabName) {
-        // Esconder todas as abas
-        var tabcontent = document.getElementsByClassName("tab-content");
-        for (var i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+        // Troca modo claro/escuro
+        const btnMode = document.getElementById('btn-mode');
+        let darkMode = false;
+        btnMode.onclick = function() {
+            darkMode = !darkMode;
+            document.body.classList.toggle('dark', darkMode);
+            btnMode.textContent = darkMode ? "☀️ Modo Claro" : "🌙 Modo Escuro";
         }
-        // Remover a classe "active" de todos os botões
-        var tablinks = document.getElementsByClassName("tablinks");
-        for (var i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+
+        // Botão para entrar no site
+        document.getElementById('btn-entrar').onclick = function() {
+            document.getElementById('welcome-container').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
         }
-        // Mostrar a aba atual e adicionar a classe "active" ao botão que abriu a aba
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
 
-    // Abrir a aba de umidade da água por padrão
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelector(".tablinks").click();
-    });
-</script>
+        // Botão para voltar para a tela inicial
+        document.getElementById('btn-voltar').onclick = function() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('welcome-container').style.display = 'block';
+        }
 
+        // Controle de abas
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(tab => tab.style.display = 'none');
+                const tabName = btn.getAttribute('data-tab');
+                document.getElementById('tab-' + tabName).style.display = 'block';
+                btn.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
