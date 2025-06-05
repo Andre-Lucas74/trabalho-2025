@@ -1,28 +1,150 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Pessoal - André Lucas Pinto</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados de Umidade e Nível de Água</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Referência ao arquivo CSS -->
 </head>
 <body>
-  <header>
-      <h1>André Lucas Pinto</h1>
-      <h2>Estudante | Pretensão de Estágio: Design Gráfico</h2>
-  </header>
-  <main>
-      <section>
-          <h3>Sobre Mim</h3>
-          <p>Olá, me chamo André Lucas Pinto e sou estudante do Maria Montessori, estou no segundo ano médio, por enquanto não penso em estágio e essas coisas, mas se fosse pra fazer seria design gráfico. </p>
-      </section>
-      <section>
-          <h3>Contato</h3>
-          <p>Você pode me encontrar nas redes sociais ou entrar em contato por e-mail.</p>
-      </section>
-  </main>
-  <footer>
-      <p>&copy; 2025 André Lucas Pinto. Todos os direitos reservados.</p>
-  </footer>
+
+<header>
+    <h1>Dados de Umidade e Nível de Água</h1>
+</header>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'umidade-agua')">Umidade da Água</button>
+    <button class="tablinks" onclick="openTab(event, 'nivel-agua')">Nível da Água</button>
+    <button class="tablinks" onclick="openTab(event, 'umidade-sol')">Umidade do Sol</button>
+</div>
+
+<main>
+    <!-- Umidade da Água -->
+    <div id="umidade-agua" class="tab-content">
+        <h2>Umidade da Água</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Umidade da Água (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01/06/2025</td>
+                    <td>75</td>
+                </tr>
+                <tr>
+                    <td>02/06/2025</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>03/06/2025</td>
+                    <td>70</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="chart-container">
+            <h3>Gráfico de Umidade da Água</h3>
+            <div class="chart" id="chartUmidade">
+                <p>Gráfico de umidade da água será exibido aqui.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nível da Água -->
+    <div id="nivel-agua" class="tab-content">
+        <h2>Nível da Água</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Nível da Água (cm)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01/06/2025</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>02/06/2025</td>
+                    <td>130</td>
+                </tr>
+                <tr>
+                    <td>03/06/2025</td>
+                    <td>110</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="chart-container">
+            <h3>Gráfico de Nível da Água</h3>
+            <div class="chart" id="chartNivel">
+                <p>Gráfico de nível da água será exibido aqui.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Umidade do Sol -->
+    <div id="umidade-sol" class="tab-content">
+        <h2>Umidade do Sol</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Umidade do Sol (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01/06/2025</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>02/06/2025</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td>03/06/2025</td>
+                    <td>55</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="chart-container">
+            <h3>Gráfico de Umidade do Sol</h3>
+            <div class="chart" id="chartSol">
+                <p>Gráfico de umidade do sol será exibido aqui.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Dados Ambientais. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    function openTab(evt, tabName) {
+        // Esconder todas as abas
+        var tabcontent = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        // Remover a classe "active" de todos os botões
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        // Mostrar a aba atual e adicionar a classe "active" ao botão que abriu a aba
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Abrir a aba de umidade da água por padrão
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".tablinks").click();
+    });
+</script>
+
 </body>
 </html>
